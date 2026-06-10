@@ -2,8 +2,8 @@ package internal
 
 import (
 	"fmt"
+	"io"
 	"log"
-	"os"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -76,9 +76,9 @@ func Printnodes(node *html.Node) {
 	}
 }
 
-func ParseHtml(file *os.File) {
+func ParseHtml(r io.Reader) {
 
-	node, err := html.Parse(file)
+	node, err := html.Parse(r)
 
 	if err != nil {
 		log.Fatal("error occured", err)
