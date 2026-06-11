@@ -1,4 +1,4 @@
-module github.com/umesshk/html-parser.git
+module github.com/umesshk/html-parser
 
 go 1.26.3
 

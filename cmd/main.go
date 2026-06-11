@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/umesshk/html-parser.git/internal"
+	"github.com/umesshk/html-parser/internal"
 )
 
 func main() {
