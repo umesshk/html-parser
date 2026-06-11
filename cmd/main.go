@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/umesshk/html-parser/internal"
+	"github.com/umesshk/html-parser/parser"
 )
 
 func main() {
@@ -20,6 +20,6 @@ func main() {
 		os.Exit(-1)
 	}
 
-	internal.ParseHtml(file)
+	parser.ParseHtml(file)
 
 }
