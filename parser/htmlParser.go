@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"strings"
@@ -14,8 +13,6 @@ type Link struct {
 	Href string `json:"href"`
 	Text string `json:"text"`
 }
-
-var linkTags []Link
 
 func getText(n *html.Node) string {
 
@@ -32,7 +29,7 @@ func getText(n *html.Node) string {
 	return text
 }
 
-func Printnodes(node *html.Node) {
+func BuildNodes(node *html.Node) []Link {
 
 	// Traversing by recursion/DFS
 
@@ -50,7 +47,7 @@ func Printnodes(node *html.Node) {
 			printnodes(c)
 		}
 	*/
-
+	var linkTags []Link
 	for n := range node.Descendants() {
 		var link string
 		var text string
@@ -74,21 +71,19 @@ func Printnodes(node *html.Node) {
 		}
 
 	}
+	return linkTags
 }
 
-func ParseHtml(r io.Reader) {
+func ParseHtml(r io.Reader) []Link {
 
 	node, err := html.Parse(r)
 
 	if err != nil {
 		log.Fatal("error occured", err)
-		return
+		return nil
 	}
-	Printnodes(node)
+	links := BuildNodes(node)
 
-	for _, l := range linkTags {
-		fmt.Println("href : ", l.Href)
-		fmt.Println("Text: ", l.Text)
-	}
+	return links
 
 }

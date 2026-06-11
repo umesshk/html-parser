@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"os"
 
@@ -20,6 +21,8 @@ func main() {
 		os.Exit(-1)
 	}
 
-	parser.ParseHtml(file)
+	links := parser.ParseHtml(file)
+
+	fmt.Println(links)
 
 }
